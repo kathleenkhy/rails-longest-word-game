@@ -1,0 +1,21 @@
+<div class="m-4">
+  <h1>New Game</h1>
+    <ul class="d-flex flex-row list-unstyled">
+      <% @generated_letters.each do |letter| %>
+        <li class="p-4 me-4 bg-primary opacity-85" id="letter-text">
+          <%= letter %>
+        </li>
+      <% end %>
+    </ul>
+  <div class='mt-5'>
+    <form action="/score" method="post" data-turbo="false">
+      <div class="mb-3">
+        <label for="answer" class="form-label">What is the longest word you can find?</label>
+        <input type="text" class="form-control" id="answer" name="answer">
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <%= hidden_field_tag :generated_letters, @generated_letters %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+  </div>
+</div>
